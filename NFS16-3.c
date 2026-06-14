@@ -1,12 +1,11 @@
 /*
-Saya Fatih Al-Ghifari Akbar Hasani dengan NIM 2508890 mengerjakan Tugas Praktikum 3
-dalam mata kuliah Dasar-Dasar Pemrograman untuk keberkahanNya maka saya
-tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin
+Saya Fatih Al-Ghifari Akbar Hasani dengan NIM 2508890 mengerjakan Tugas
+Praktikum 3 dalam mata kuliah Dasar-Dasar Pemrograman untuk keberkahanNya maka
+saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin
 */
 #include <stdio.h>
 #include <string.h>
-int main()
-{
+int main() {
     // sebagai variabel untuk jumlah lap
     int n;
     // meminta input agar jumlah lap dapat dinamis
@@ -23,8 +22,7 @@ int main()
     scanf("%s", &tim1);
     /*meminta input untuk poin setiap lap milik pembalap pertama dengan
     jumlah lap adalah n lap seperti yang dimasukkan*/
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         scanf("%d", &poin1[i]);
     }
 
@@ -32,8 +30,7 @@ int main()
     scanf("%s", &tim2);
     /*meminta input untuk poin setiap lap milik pembalap kedua dengan
     jumlah lap adalah n lap seperti yang dimasukkan*/
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         scanf("%d", &poin2[i]);
     }
 
@@ -53,8 +50,7 @@ int main()
     int total_poin2 = 0;
     /*menggunakan perulangan for untuk menjumlahkan poin poin pembalap
     kedua*/
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         total_poin2 += poin2[i];
     }
 
@@ -69,69 +65,50 @@ int main()
     int total_index_genap1 = 0;
     int total_index_genap2 = 0;
     /*penkondisian untuk menentukan pemanang*/
-    if (total_poin1 > total_poin2)
-    {
+    if (total_poin1 > total_poin2) {
         pembalap_winner++;
-    }
-    else if (total_poin1 == total_poin2)
-    {
+    } else if (total_poin1 == total_poin2) {
         /*pengkondisian jika total jumlah poin sama*/
-        for (int i = 0; i < n; i++)
-        {
-            if (poin1[i] == 100)
-            {
+        for (int i = 0; i < n; i++) {
+            if (poin1[i] == 100) {
                 perfect_race1++;
             }
-            if (poin2[i] == 100)
-            {
+            if (poin2[i] == 100) {
                 perfect_race2++;
             }
         }
-        if (perfect_race1 > perfect_race2)
-        {
+        if (perfect_race1 > perfect_race2) {
             pembalap_winner++;
-        }
-        else
-        {
+        } else {
             /*pengkondisian jika total jumlah poin seimbang dan banyaknya poin
             sempurna milik setiap pembalap*/
-            for (int j = 0; j < n; j++)
-            {
-                if (j % 2 == 0)
-                {
+            for (int j = 0; j < n; j++) {
+                if (j % 2 == 0) {
                     total_index_genap1 += poin1[j];
                     total_index_genap2 += poin2[j];
                 }
             }
         }
-        
     }
-    if (total_index_genap1 > total_index_genap2)
-        {
-            pembalap_winner++;
-        }
+    if (total_index_genap1 > total_index_genap2) {
+        pembalap_winner++;
+    }
 
     // membuat variavel baru untuk menampung nama pemenang dan tim pemenang
     int panjang_tim1 = strlen(tim1);
     int panjang_tim2 = strlen(tim2);
     int o;
-    if (pembalap_winner == 1)
-    {
+    if (pembalap_winner == 1) {
         o = panjang_tim1 + 1;
-    }
-    else
-    {
+    } else {
         o = panjang_tim2 + 1;
     }
     char pemenang[50];
     char tim_pemenang[o];
-    if (pembalap_winner == 1)
-    {
+    if (pembalap_winner == 1) {
         strcpy(pemenang, nama1);
         strcpy(tim_pemenang, tim1);
-    }
-    else
-    {
+    } else {
         strcpy(pemenang, nama2);
         strcpy(tim_pemenang, tim2);
     }
@@ -144,8 +121,7 @@ int main()
     char nama_dibalik[50];
     // membalikkan nama pemenang
     int d = panjang_nama;
-    for (int i = 0; i < panjang_nama; i++)
-    {
+    for (int i = 0; i < panjang_nama; i++) {
         nama_dibalik[i] = pemenang[d - 1];
         d--;
     }
@@ -156,25 +132,21 @@ int main()
     int f = 1;
     int e = 0;
     /*perulangan untuk menukar posisi huruf bersebelahan*/
-    for (int i = 0; i < panjang_nama; i++)
-    {
+    for (int i = 0; i < panjang_nama; i++) {
         /*pengkondisian untuk memulai character berindex genap dari 1 dan
         jika berindex ganjil maka adan dimulai dari 0 lalu ditambah 2 karena
         ganjil ditambah 2 akan selalu ganjil dan begitu juga dengan genap */
-        if (i % 2 == 0)
-        {
+        if (i % 2 == 0) {
             nama_ditukar[i] = nama_dibalik[f];
             f += 2;
         }
-        if (i % 2 == 1)
-        {
+        if (i % 2 == 1) {
             nama_ditukar[i] = nama_dibalik[e];
             e += 2;
         }
         /*pengkondisian jika panjang string pemanang ganjil maka
         huruf terakhir dibiarkan sendiri.*/
-        if (panjang_nama % 2 == 1)
-        {
+        if (panjang_nama % 2 == 1) {
             nama_ditukar[panjang_nama - 1] = nama_dibalik[panjang_nama - 1];
         }
     }
@@ -182,26 +154,22 @@ int main()
 
     /*pengkondisian untuk mengubah character kapital menjadi kecil
     dan sebaliknya serta mengubah charakter konsonan menjadi '*'*/
-    for (int i = 0; i < panjang_nama; i++)
-    {
-        if ((i % 2 == 1) && (122 >= nama_ditukar[i]) && (nama_ditukar[i] >= 97))
-        {
+    for (int i = 0; i < panjang_nama; i++) {
+        if ((i % 2 == 1) && (122 >= nama_ditukar[i]) &&
+            (nama_ditukar[i] >= 97)) {
             nama_ditukar[i] -= 32;
         }
-        if ((i % 2 == 0) && (90 >= nama_ditukar[i]) && (nama_ditukar[i] >= 65))
-        {
+        if ((i % 2 == 0) && (90 >= nama_ditukar[i]) &&
+            (nama_ditukar[i] >= 65)) {
             nama_ditukar[i] += 32;
         }
         if (nama_ditukar[i] == 'A' || nama_ditukar[i] == 'I' ||
             nama_ditukar[i] == 'U' || nama_ditukar[i] == 'E' ||
             nama_ditukar[i] == 'O' || nama_ditukar[i] == 'a' ||
             nama_ditukar[i] == 'i' || nama_ditukar[i] == 'u' ||
-            nama_ditukar[i] == 'e' || nama_ditukar[i] == 'o')
-        {
+            nama_ditukar[i] == 'e' || nama_ditukar[i] == 'o') {
             nama_ditukar[i] = nama_ditukar[i];
-        }
-        else
-        {
+        } else {
             nama_ditukar[i] = '*';
         }
     }
@@ -212,30 +180,24 @@ int main()
     printf("WOw!! PerTarungan yang sangat Sengit\n");
     /*menentukan apa yang harus ditampilkan jika pemenang adalah pemabalap 1
     dan jika pemenangnya adalah pembalap 2*/
-    if (pembalap_winner == 1)
-    {
+    if (pembalap_winner == 1) {
         printf("\nW0w!!! Pemenangnya adlah %s!!!!\n", nama_ditukar);
         printf("\nini nggak bo0ng, sumpahh, dia keren bgt\n\n");
-    }
-    else if (pembalap_winner == 0)
-    {
+    } else if (pembalap_winner == 0) {
         printf("\nWOw!!! Pemenangnya adlah %s!!!\n", nama_ditukar);
         printf("\nini nggak boOng, sumpahh, dia keren bgt\n\n");
     }
-    /* menentukan pembalap mana yang kena denda dan jika memang pembalap tersebut
-    kena denda berapa jumlah yang harus dibayarkan*/
-    if (strcmp(tim_bebas, tim_pemenang) == 0)
-    {
+    /* menentukan pembalap mana yang kena denda dan jika memang pembalap
+    tersebut kena denda berapa jumlah yang harus dibayarkan*/
+    if (strcmp(tim_bebas, tim_pemenang) == 0) {
         printf("Ternyta %s bebas dari denda Pulici!", nama_ditukar);
-    }
-    else if (strcmp(tim_bebas, tim_pemenang) < 0)
-    {
+    } else if (strcmp(tim_bebas, tim_pemenang) < 0) {
         printf("Ternyta %s harus bayar denda $7,000!", nama_ditukar);
-    }
-    else
-    {
+    } else {
         printf("Ternyta %s harus bayar denda $15,000!", nama_ditukar);
     }
     printf("\n");
     return 0;
 }
+
+// kanjud
